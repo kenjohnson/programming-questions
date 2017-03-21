@@ -1,5 +1,8 @@
 // binary tree, add node, delete nodes
 // Assigned Sunday March 12, 2017 InterviewPrep bootcamp
+// Delete is not complete. 
+// This is an unsorted array. I just pass it a value of 
+// a node, and the code should add the node after this one.  
 class Node {
 
 	constructor(value) {

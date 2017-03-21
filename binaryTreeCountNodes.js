@@ -37,9 +37,9 @@ function  traverse(n) {
 	var left = 0; 
 	var right = 0;
 	
-	if (n.getLeft() == null && n.getRight() == null) { // it is a leaf node
-		return 1;
-	}
+	//if (n.getLeft() == null && n.getRight() == null) { // it is a leaf node
+	//	return 1;
+	//}
 
 	if (n.getLeft()) {
 		left = traverse(n.getLeft());
