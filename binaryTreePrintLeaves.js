@@ -46,9 +46,9 @@ function traverse(n) {
 	}
 
 	if (n.getRight()) {
-        traverse(n.getRight());
+		traverse(n.getRight());
 	}
-	
+
 }
 
 

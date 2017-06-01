@@ -1,8 +1,11 @@
-// in array of sorted numbers find biggest 
-// substring where numbers are the same
-// time complexity, I would say is O(n)
+// In an array of sorted numbers,  find the biggest 
+// substring where the numbers are the same.
+// For example, in the string "124577789", 777 would
+// be the biggest substring. 
+//
+// The time complexity is O(n)
 // because you will have to go through the whole
-// array in worse case. 
+// array in the worst case. 
 
 var arr = [1, 2, 2, 3, 5, 6, 7, 7, 7, 7, , 8, 9, 10, 11];
 
@@ -22,6 +25,7 @@ for (var i = 0; i < arr.length - 1; i++) {
 		count = 1;
 	}
 
+    // This part is really not necessary. 
 	if (max > arr.length - i) { // if max bigger than remaining space your done
 		break;
 	}
