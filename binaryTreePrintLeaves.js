@@ -2,6 +2,7 @@
 // This is my core code used to traverse through a binary tree
 // To run on windows, bring up command prompt and do
 // >node binaryTreePrintLeaves
+"use strict";
 class Node {
 
 	constructor(value) {
@@ -37,7 +38,7 @@ class Node {
 
 function traverse(n) {
 	//console.log(n.getValue());
-	if (n.getLeft() == null && n.getRight() == null) { // it is a leaf node
+	if (n.getLeft() === null && n.getRight() === null) { // it is a leaf node
 		console.log(n.getValue());
 	}
 
@@ -53,8 +54,8 @@ function traverse(n) {
 
 
 // create tree for testing
-arr = [];
-for (i = 1; i < 10; i++) {
+var arr = [];
+for (var i = 1; i < 10; i++) {
 	arr[i] = new Node(i);
 }
 
