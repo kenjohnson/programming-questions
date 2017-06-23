@@ -1,5 +1,6 @@
 // Count all the nodes on this binary tree.
 //
+"use strict";
 class Node {
 
 	constructor(value) {
@@ -43,12 +44,12 @@ function  traverse(n) {
 
 	if (n.getLeft()) {
 		left = traverse(n.getLeft());
-		console.log("n.getValue " + n.getValue() + " left is: " + left  );
+		//console.log("n.getValue " + n.getValue() + " left is: " + left  );
 	}
 
 	if (n.getRight()) {
 		right = traverse(n.getRight());
-		console.log("  n.getValue " + n.getValue() + " right is: " + right  );
+		//console.log("  n.getValue " + n.getValue() + " right is: " + right  );
 	}
 	
 	return left + right + 1;
@@ -58,8 +59,8 @@ function  traverse(n) {
 
 
 // create tree for testing
-arr = [];
-for (i = 1; i < 10; i++) {
+var arr = [];
+for ( var i = 1; i < 10; i++) {
 	arr[i] = new Node(i);
 }
 
