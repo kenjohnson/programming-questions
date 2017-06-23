@@ -1,5 +1,6 @@
 // Sum all the values in binary tree.
 //
+"use strict";
 class Node {
 
 	constructor(value) {
@@ -33,34 +34,34 @@ class Node {
 }
 
 
-function  traverse(n) {
-	var left = 0; 
+function traverse(n) {
+	var left = 0;
 	var right = 0;
-	
+
 	//if (n.getLeft() == null && n.getRight() == null) { // it is a leaf node
 	//	return 1;
 	//}
 
 	if (n.getLeft()) {
 		left = traverse(n.getLeft());
-		console.log("n.getValue " + n.getValue() + " left is: " + left  );
+		//console.log("n.getValue " + n.getValue() + " left is: " + left);
 	}
 
 	if (n.getRight()) {
 		right = traverse(n.getRight());
-		console.log("  n.getValue " + n.getValue() + " right is: " + right  );
+		//console.log("  n.getValue " + n.getValue() + " right is: " + right);
 	}
 
-	
+
 	return left + right + n.getValue();
-	
+
 
 }
 
 
 // create tree for testing
-arr = [];
-for (i = 1; i < 10; i++) {
+var arr = [];
+for (var i = 1; i < 10; i++) {
 	arr[i] = new Node(i);
 }
 
