@@ -2,6 +2,7 @@
 // print all the nodes that you can see from the left. 
 // To run on windows, bring up command prompt and do
 // >node binaryTreePrintLeftView.js
+"use strict";
 class Node {
 
 	constructor(value) {
@@ -43,7 +44,6 @@ var max_level = 0; // current maximum level
 // level keeps decreasing.    
 function traverse(n, level) {
 
-
 	// if you have gone to the next level, print the node.  	
     if (max_level < level) {
     	console.log( n.getValue());
@@ -52,11 +52,11 @@ function traverse(n, level) {
 
     
 	if (n.getLeft()) {
-		var left = traverse(n.getLeft(), level +1 );
+		traverse(n.getLeft(), level +1 );
 	}
 
 	if (n.getRight()) {
-		var right = traverse(n.getRight(), level + 1);
+		traverse(n.getRight(), level + 1);
 	}
 
     return;
@@ -64,8 +64,8 @@ function traverse(n, level) {
 
 
 // create tree for testing
-arr = [];
-for (i = 1; i < 10; i++) {
+var arr = [];
+for ( var i = 1; i < 10; i++) {
 	arr[i] = new Node(i);
 }
 
