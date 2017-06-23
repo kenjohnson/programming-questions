@@ -1,5 +1,6 @@
 // get levels in the tree
 // Remember root level is zero, so in my model it is 3
+"use strict";
 class Node {
 
 	constructor(value) {
@@ -39,33 +40,29 @@ function traverse(n) {
 	var left = 0;
 	var right = 0;
 
-	//if (n.getLeft() == null && n.getRight() == null) { // it is a leaf node		
-	//	return 1;
-	//}
-
 	if (n.getLeft()) {
-		var left = traverse(n.getLeft());
+		left = traverse(n.getLeft());
 	}
 
 	if (n.getRight()) {
-		var right = traverse(n.getRight());
+		right = traverse(n.getRight());
 	}
 
-	console.log("   value is: " + n.getValue());
+	//console.log("   value is: " + n.getValue());
 	if (left > right) {
-		console.log("value is " + n.getValue() + " left is " + left);
+		//console.log("value is " + n.getValue() + " left is " + left);
 		return left + 1;
 	} else {
-		console.log("value is " + n.getValue() + " right is " + right);
+		//console.log("value is " + n.getValue() + " right is " + right);
 		return right + 1;
 	}
 
 }
 
 // create tree for testing
-arr = [];
+var arr = [];
 //for (i=1; i < 12; i++) {
-for (i = 1; i < 10; i++) {
+for ( var i = 1; i < 10; i++) {
 	arr[i] = new Node(i);
 }
 
