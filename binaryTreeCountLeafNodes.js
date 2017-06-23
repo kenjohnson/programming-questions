@@ -1,5 +1,6 @@
 // Count all the leaf nodes on this binary tree.
 //
+"use strict";
 class Node {
 
 	constructor(value) {
@@ -37,7 +38,7 @@ function  traverse(n) {
 	var left = 0; 
 	var right = 0;
 	
-	if (n.getLeft() == null && n.getRight() == null) { // it is a leaf node
+	if (n.getLeft() === null && n.getRight() === null) { // it is a leaf node
 		// I return 1 here in this leaf node. Since this program is to count
 		// leaf nodes, I do not return 1 anywhere else. 
 		return 1;
@@ -45,12 +46,12 @@ function  traverse(n) {
 
 	if (n.getLeft()) {
 		left = traverse(n.getLeft());
-		console.log("n.getValue " + n.getValue() + " left is: " + left  );
+		//console.log("n.getValue " + n.getValue() + " left is: " + left  );
 	}
 
 	if (n.getRight()) {
 		right = traverse(n.getRight());
-		console.log("  n.getValue " + n.getValue() + " right is: " + right  );
+		//console.log("  n.getValue " + n.getValue() + " right is: " + right  );
 	}
 	
 	return left + right;
@@ -60,8 +61,8 @@ function  traverse(n) {
 
 
 // create tree for testing
-arr = [];
-for (i = 1; i < 10; i++) {
+var arr = [];
+for ( var i = 1; i < 10; i++) {
 	arr[i] = new Node(i);
 }
 
@@ -74,3 +75,7 @@ arr[2].setLeft(arr[4]);
 arr[2].setRight(arr[5]);
 arr[1].setLeft(arr[2]);
 arr[1].setRight(arr[3]);
+
+// test
+var res = traverse(arr[1],1);
+console.log("The number of leaf nodes is: " + res);
