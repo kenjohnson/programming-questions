@@ -1,3 +1,11 @@
+// reverse a linked list
+// A lot of the work here is just building the classes,
+// and creating a linked list. 
+// We build a node class, then we build a list class.
+// the addValue method is used to create the linked list. 
+// All the reversing is done in the reverse method. 
+// 
+"use strict";
 class Node {
 
 	constructor(value) {
@@ -22,12 +30,12 @@ class Node {
 }
 
 class List {
-	constructor(value) {
+	constructor() {
 		this.head = null;
 		this.tail = null;
 	}
 	addValue(value) {
-		//this.value = value;
+
 		if (this.head === null) {
 			this.head = new Node(value);
 			this.tail = this.head;
@@ -39,21 +47,21 @@ class List {
 	getHead() {
 		return this.head;
 	}
-	setHead(value){
-       this.head = value;
+	setHead(value) {
+		this.head = value;
 	}
-	setTail(value){
+	setTail(value) {
 		this.tail = value;
 	}
 	getTail() {
 		return this.tail;
 	}
 	display() {
-		if (this.head != null) {
+		if (this.head !== null) {
 			//console.log(this.head.getValue());
 
 			var temp = this.head;
-			while (temp != null) {
+			while (temp !== null) {
 				console.log(temp.getValue());
 				temp = temp.getNext();
 			}
@@ -61,73 +69,37 @@ class List {
 			console.log("head is null");
 		}
 	}
-	reverse(){
+	reverse() {
 		this.tail = this.head;
-         var prev = null;
-         var current = this.head;
-         var next = null;
+		var prev = null;
+		var current = this.head;
+		var next = null;
 
-         while( current != null){
-         	next = current.getNext();
-         	current.setNext(prev);
-         	prev = current;
-         	current = next;
-         	
-         	console.log("prev " + prev + " current " + current + " next "+ next);
-         }
+		while (current !== null) {
+			next = current.getNext();
+			current.setNext(prev);
+			prev = current;
+			current = next;
+		}
 
-         this.head = prev;
-
-
-
-
+		this.head = prev;
 	}
 
 }
 
-a = new Node(10);
-console.log(a.getValue());
-a.getNext();
-console.log(a.getNext());
-
-list = new List();
-list.display();
+// build a new list
+var list = new List();
 list.addValue(11);
-
-list.display();
 list.addValue(12);
-
-list.display();
 list.addValue(13);
-
-list.display();
 list.addValue(14);
-console.log("last one");
+//display that list
+console.log("\nDisplay original list");
 list.display();
-/*
-function reverse( list){
-	console.log("entering reverse");
-	list.display();
-	var prev = null;
-	var current = list.getHead();
-	var next = list.getHead().getNext();
 
-    while (next != null) {
-    	next = current.getNext();
-    	current.setNext(prev);
-    	prev = current;
-    	
-
-    	console.log("prev " + prev + " current " + current + " next "+ next);
-    }
-    prevh = list.getHead();
-    list.setHead(current);
-    list.setTail(prevh);
-    console.log("before return");
-    list.display();
-    return list;
-}
-*/
+//reverse the list
 list.reverse();
 
+//display reversed list
+console.log("\nDisplay reversed list");
 list.display();
