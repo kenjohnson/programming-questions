@@ -97,4 +97,4 @@ max_level = 0;
 arr[4].setLeft(null);
 arr[2].setLeft(null);
 
-traverse(arr[1],1); // start at level 1. 
+traverse(arr[1], 1); // start at level 1.
