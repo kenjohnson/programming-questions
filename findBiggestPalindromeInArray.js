@@ -6,12 +6,15 @@
 function findBiggestPalindrome(arr) {
 	// make sure array exists
 	if (arr === null || arr.length === 0) {
-		console.log("array empty");
+		console.log("input array empty");
 		return;
 	}
 
 	var max = 1; // initialize current max paladrome length
 
+	// Initialize start point in the middle of the array,
+	// (we will zig zag left and right and touch every element
+	// of the array)
 	// if odd it will be right in the middle
 	// if even it will be 1 to the right
 	var startPoint = Math.floor(arr.length / 2); // 1 right of the middle
@@ -21,7 +24,10 @@ function findBiggestPalindrome(arr) {
 	var pivotPtrL = startPoint - 1; // points to array entry on the left
 	var pivotPtrR = startPoint + 1; // points to array entry on the right
 
-	console.log("starting " + startPoint);
+	var startPalindrome; // after we get a palindrome this is it's start pos
+	var endPalindrome; // after we get a palindrome this is it's end pos
+
+	console.log("pivot point of biggest palindrome: " + startPoint);
 
 	var side = 1; // 1 means left side, 0 means right side
 
@@ -42,65 +48,114 @@ function findBiggestPalindrome(arr) {
 		} else if (side) { // left side
 			//console.log("enter while  pivotPtrL " + pivotPtrL);
 			pivot = pivotPtrL--;
-			console.log("pivot coming from left side " + pivot);
+			//console.log("pivot coming from left side " + pivot);
 			//pivotPtrL--;
 			side = 0;
 		} else { //right side
 			//console.log("enter while  pivotPtrR " + pivotPtrR);
 			pivot = pivotPtrR++;
-			console.log("pivot coming from right side " + pivot);
+			//console.log("pivot coming from right side " + pivot);
 			//pivotPtrR++;
 			side = 1;
 		}
 
-		var palindromeSize = getPalindrome(arr, pivot);
+		var retarr = []; // return array, contains count, start, end
+
+		retarr = getPalindrome(arr, pivot);
+		var palindromeSize = retarr[0];
+		//console.log("size " + retarr[0]);
+		//console.log(" pivotPtrLx " + pivotPtrL );
 
 		if (palindromeSize > max) {
-			 max = palindromeSize;
-			 console.log("pivot for current max is: " + arr[pivot]);
+			max = palindromeSize;
+			startPalindrome = retarr[1]; // start pos of palindrome
+			endPalindrome = retarr[2]; // end pos of palindrome
 		}
-		//  console.log("count " + count + " max " + max + " pivotPtrL " + pivotPtrL );
+		//console.log(" pivotPtrL " + pivotPtrL );
 
 
 	}
-	console.log("The size of the biggest palindrome is " + max);
+	console.log("Size of biggest palindrome: " + max);
+
+	console.log("palindrome is: " +
+		arr.slice(startPalindrome, endPalindrome + 1).toString());
+
 }
 
 function getPalindrome(arr, pivot) {
 
-	// check for double letters
+	// From the pivot point fan outward towards the right and left until it
+	// is no longer a palindrome, or you reach the array boundary.
+	var ptrL;
+	var ptrR;
+	var count;
 
-	var ptrL = pivot - 1; // fan outward to the left
-	var count = 1; // set palindrome size count
-
-	if (arr[pivot - 1] === arr[pivot]) { // check if 2 letters are the same, if so move ptr, incr count
+	// This if block initializes the left and right pointers and initializes the count.
+	// This if block is covering the case where you might have 2 letters  next to 
+	// each other that are the same.  
+	if (arr[pivot - 1] === arr[pivot] && arr[pivot] !== arr[pivot + 1]) { // if duplicate letter on left
 		ptrL = pivot - 2;
+		ptrR = pivot + 1;
 		count = 2;
+	} else if (arr[pivot - 1] !== arr[pivot] && arr[pivot] === arr[pivot + 1]) { // if duplicate letter on right
+		ptrL = pivot - 1;
+		ptrR = pivot + 2;
+		count = 2;
+	} else {
+		ptrL = pivot - 1;
+		ptrR = pivot + 1;
+		count = 1;
 	}
-	var ptrR = pivot + 1; // fan outward to the right
+
 
 	// loop through and get the size of the palindrome
-	while (arr[ptrL--] == arr[ptrR++]) { // core part of the whole program
+	// Note we check to see if we are still within the
+	// array boundaries. 
+	while (arr[ptrL] === arr[ptrR] && ptrL >= 0 && ptrR < arr.length) { // core part of the whole program
+		ptrL--;
+		ptrR++;
 		count = count + 2;
 	}
-	// Todo: add for even length palindromes. For that I will add 
-	// cases for right and or left same letter.
-
-	return count;
+	//console.log("L " + ptrL + " R " + ptrR );
+	// we are done, we have the count, now just set the 
+	// start and end points so we can print the palindrome.
+	var start = ptrL + 1;
+	var end = ptrR - 1;
+	return [count, start, end];
 }
 
 // run test
-console.log("test 1");
+console.log("test 1 - nested palindrome plus touches right boundary");
 var arr = ["p", "o", "x", "a", "m", "y", "e", "m", "e", "f", "y", "f", "e", "m"];
-console.log("test array is: " + arr);
+console.log("input array: " + arr);
 findBiggestPalindrome(arr);
 
-console.log("\ntest 2");
+console.log("\ntest 2 - easy functional test");
 arr = ["p", "o", "x", "o", "m", "y", "e"];
-console.log("test array is: " + arr);
+console.log("input array: " + arr);
 findBiggestPalindrome(arr);
 
-console.log("\ntest 3");
+console.log("\ntest 3 - test 2 characters for pivot");
 arr = ["p", "a", "b", "b", "a", "y", "e"];
-console.log("test array is: " + arr);
+console.log("input array: " + arr);
+findBiggestPalindrome(arr);
+
+console.log("\ntest 4 - nested ");
+arr = ["r", "a", "d", "a", "r", "a", "d", "a", "w", "a", "d", "a", "r", "a", "d", "a", "r"];
+console.log("input array: " + arr);
+findBiggestPalindrome(arr);
+
+console.log("\ntest 5 - test whole array is palindrome");
+arr = ["r", "a", "d", "a", "r"];
+console.log("input array: " + arr);
+findBiggestPalindrome(arr);
+
+console.log("\ntest 6");
+arr = [];
+console.log("input array: " + arr);
+findBiggestPalindrome(arr);
+
+console.log("\ntest 6 - all same letters, except last");
+arr = ["f","f", "f", "f", "f", "a"];
+console.log("input array: " + arr);
 findBiggestPalindrome(arr);
