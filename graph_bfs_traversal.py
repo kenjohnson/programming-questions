@@ -1,14 +1,13 @@
-'''
-Oct 14, 2019
-Graph traversal
-Breath first search
+# Oct 14, 2019
+# Graph traversal
+# Breath first search
 
-The purpose of this program is to print all the nodes of the graph.
-To do this, we have to traverse the whole graph.
-we are using breadth first search.
-NOTE: if the whole graph is connected we will only have to
-      call the graph_traverse function once.
-'''
+# The purpose of this program is to print all the nodes of the graph.
+# To do this, we have to traverse the whole graph.
+# we are using breadth first search.
+# NOTE: if the whole graph is connected we will only have to
+#      call the graph_traverse function once.
+
 
 def graph_traverse(g, v, visited_set):
    '''
@@ -22,11 +21,9 @@ def graph_traverse(g, v, visited_set):
    until there are no remaining nodes left. 
    ''' 
    
-   '''
-   g - the graph
-   v - a graph node 
-   visited_set - nodes that have been visited
-   '''
+   # g - the graph
+   # v - a graph node 
+   # visited_set - nodes that have been visited
 
    print("ENTERING GRAPH TRAVERSE FUNCTION")
    s = []  # holds list of nodes to consider visiting
@@ -64,14 +61,12 @@ def main():
    and makes the intial call to graph_traverse to
    start traversing the graph
    ''' 
-   
-   '''
-   g - is the graph. We are using an adjacency list to
-        represent the graph. The dictionary
-        keys represent the nodes and for any key the value
-        is a list of nodes the key points to.  
-   '''
-   
+
+   #g - is the graph. We are using an adjacency list to
+   #     represent the graph. The dictionary
+   #     keys represent the nodes and for any key the value
+   #     is a list of nodes the key points to.  
+ 
    g = {
        1: [3],
        3: [5, 4],
@@ -81,23 +76,23 @@ def main():
        5: []
       }
 
-   '''
-   g = {
-       1: [2],
-       2: [11, 12, 13],
-       3: [14, 15, ],
-       4: [16, 17, 18, 19],
-       11:[],
-       12:[],
-       13:[4],
-       14:[],
-       15:[],
-       16:[1],
-       17:[],
-       18:[],
-       19:[]
-      }
-   '''
+
+   #g = {
+   #    1: [2],
+   #    2: [11, 12, 13],
+   #    3: [14, 15, ],
+   #    4: [16, 17, 18, 19],
+   #    11:[],
+   #    12:[],
+   #    13:[4],
+   #    14:[],
+   #    15:[],
+   #    16:[1],
+   #    17:[],
+   #    18:[],
+   #    19:[]
+   #   }
+
 
    visited = []
    final_list = graph_traverse(g, 1, visited)
