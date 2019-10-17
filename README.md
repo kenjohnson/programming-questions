@@ -2,7 +2,7 @@
 
 ## Introduction
  This is a set of programming questions.
- The questions are about arrays, strings, linked list,
+ The questions are about arrays, strings, linked list,  
  recursion, trees, and graphs. 
 
 ## File structure
@@ -11,7 +11,7 @@
  The rest of the file is the solution to that problem.
  
 ## Languages used
- The solutions are done in Javascript, using ES6.
+ The solutions are done in Javascript, using ES6.  
  Starting in 2019, we have added solutions done in Python. 
 
 ## How to run on windows
@@ -29,5 +29,5 @@
  Wingware Python IDE. 
 
  Another way, is to bring up a bash shell
- and type in
+ and type in  
  python myfile.py    
