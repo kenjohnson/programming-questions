@@ -1,12 +1,10 @@
-'''
-Oct 14, 2019
-Graph traversal
-Depth first search
+# Oct 14, 2019
+# Graph traversal
+# Depth first search
 
-Basic depth first search of a graph.
+# Basic depth first search of a graph.
 
-This program traverses the graph and prints all the nodes
-'''
+# This program traverses the graph and prints all the nodes
 
 def dfs_util(g, v, visited_set):
    '''
