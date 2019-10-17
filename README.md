@@ -14,7 +14,7 @@
  The solutions are done in Javascript, using ES6.  
  Starting in 2019, we have added solutions done in Python. 
 
-## How to run on windows
+## How to run Javascript on windows
  You should have installed node
  and ES6.
 
@@ -23,8 +23,7 @@
  then at the command line type:
  >node myFile.js 
 
- There are a couple of ways to run in Python
-
+## How to run Python on windows
  The best way is with an IDE such as
  Wingware Python IDE. 
 
