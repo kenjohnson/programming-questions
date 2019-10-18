@@ -12,7 +12,7 @@
  
 ## Languages used
  The solutions are done in Javascript, using ES6.  
- Starting in 2019, we have added solutions done in Python. 
+ Starting in 2019, I have added solutions done in Python. 
 
 ## How to run Javascript on windows
  You should have installed node
